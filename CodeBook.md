@@ -120,8 +120,8 @@ Variable names in the intermediate data set, stored in the R working space under
 Variable names in the final data set, stored in the R working space under the name "ttsm_means" by the run_analysis script.
 
 ```
-1 subject                   _subject number
-2 activity                  _type of activity
+1 subject                   
+2 activity                  
 3 tBodyAcc.mean...X
 4 tBodyAcc.mean...Y
 5 tBodyAcc.mean...Z
