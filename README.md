@@ -6,3 +6,5 @@ The file "run_analysis.R" contains all the steps necessary to turn the data from
 The script attempts to load the R-package named "dplyr" so please make sure it is installed.
 
 The "UCI HAR Dataset.zip" package should be unzipped into the working directory before the script is run.
+
+A decription of what the script does, as well as variable names, may be found in the file CookBook.md. 
