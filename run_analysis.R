@@ -9,30 +9,31 @@
 library(dplyr)
 # 1)
 # read in variable names
-features <- read.csv("features.txt", header=FALSE, sep=" ", stringsAsFactors = FALSE)
+features <- read.csv("UCI HAR Dataset/features.txt", header=FALSE, sep=" ", stringsAsFactors = FALSE)
 featureNames <- features[,2]
-
-actlab <- read.table("activity_labels.txt", blank.lines.skip = FALSE, header=FALSE)
+remove(features)
 
 #read in test data
-test <- read.table("test/X_test.txt", blank.lines.skip = FALSE, header=FALSE)
+test <- read.table("UCI HAR Dataset/test/X_test.txt", blank.lines.skip = FALSE, header=FALSE)
 
 #set variable names in test data frame
 names(test) <- featureNames
 
 #read in test subject data
-testsub <- read.table("test/subject_test.txt", blank.lines.skip = FALSE, header=FALSE)
+testsub <- read.table("UCI HAR Dataset/test/subject_test.txt", blank.lines.skip = FALSE, header=FALSE)
 names(testsub) <- "subject"
 
 #bind subject data to test data
 test <- cbind(test, testsub)
+remove(testsub)
 
 #read in test activity data
-testact <- read.table("test/y_test.txt", blank.lines.skip = FALSE, header=FALSE)
+testact <- read.table("UCI HAR Dataset/test/y_test.txt", blank.lines.skip = FALSE, header=FALSE)
 names(testact) <- "activity"
 
 #bind activity data to test data
 test <- cbind(test, testact)
+remove(testact)
 
 test$actlabel <- "unset"
 
@@ -45,24 +46,26 @@ test$actlabel[test$activity == 6] <- "LAYING"
 
 ############################
 #read in training data
-train <- read.table("train/X_train.txt", blank.lines.skip = FALSE, header=FALSE)
+train <- read.table("UCI HAR Dataset/train/X_train.txt", blank.lines.skip = FALSE, header=FALSE)
 
 #set variable names in test data frame
 names(train) <- featureNames
-
+remove(featureNames)
 #read in training subject data
-trainsub <- read.table("train/subject_train.txt", blank.lines.skip = FALSE, header=FALSE)
+trainsub <- read.table("UCI HAR Dataset/train/subject_train.txt", blank.lines.skip = FALSE, header=FALSE)
 names(trainsub) <- "subject"
 
 #bind subject data to training data
 train <- cbind(train, trainsub)
+remove(trainsub)
 
 #read in training activity data
-trainact <- read.table("train/y_train.txt", blank.lines.skip = FALSE, header=FALSE)
+trainact <- read.table("UCI HAR Dataset/train/y_train.txt", blank.lines.skip = FALSE, header=FALSE)
 names(trainact) <- "activity"
 
 #bind activity data to training data
 train <- cbind(train, trainact)
+remove(trainact)
 
 #add new column with corresponding activity names
 train$actlabel <- "unset"
@@ -79,6 +82,9 @@ sum(names(test) != names(train))
 #combine test and training data
 traintest <- rbind(train, test)
 
+remove(test)
+remove(train)
+
 #remove troublesome data that we don't need for this analysis
 traintest <- traintest[!duplicated(names(traintest))]
 
@@ -94,8 +100,10 @@ names(traintest) <- valid_col_names
 
 #subset columns that include mean or std, and also the subject and activity columns
 ttsm <- traintest[grep("mean\\.|std|subject|activity", names(traintest))]
+remove(traintest)
 
 bySubAct <- group_by(ttsm, subject, activity)
 ttsm_means <- summarise_each(bySubAct, funs(mean))
+remove(bySubAct)
 
 #write.table(ttsm_means, file="tidy_set.txt", row.names = FALSE)
