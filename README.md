@@ -1,1 +1,5 @@
-# Coursera_DataScience_GetData_Project
+### Getting and Cleaning Data
+## Course Project
+
+Valdimar Bjorn Asgeirsson
+
