@@ -23,7 +23,7 @@ We read in the test subject data. This results in a vector of the same length as
 
 We read in the test activity data. We bind it to the test data set in the same manner as we did with the subject data.
 
-Now, we add a new column to the test data set, called “actlabel”. For each activity number, we store the corresponding activity description, as listed in the activity_labels.txt file, in the “actlabel” column. After this is done, we remove the number activity column, and rename the new column “activity”.
+Now, we add a new column to the test data set, called “actlabel”. For each activity number, we store the corresponding activity description, as listed in the activity_labels.txt file, in the “actlabel” column.
 
 We process the training data in the same way.
 
@@ -33,9 +33,11 @@ We read in the training subject data, and bind it to the training data set.
 
 We read in the training activity data, and bind it to the training data set.
 
-We add a new column to the test data set, called “actlabel”, store corresponding activity names in the columns, delete number activity column and rename the new one.
+We add a new column to the test data set, called “actlabel”, store corresponding activity names in the column.
 
 At this point we confirm that the training and the test data have the same number of columns, and then join them using rbind().
+
+After this, we remove the number activity column, and rename the temporary "actlabel" column “activity”.
 
 Our new, combined, “traintest” data set contains some columns with names that may cause trouble with later processing. Since these are unnecessary for our final data set, we simply remove them with the function traintest <- traintest[!duplicated(names(traintest))].
 
