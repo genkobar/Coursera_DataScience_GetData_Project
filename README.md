@@ -10,7 +10,8 @@ The "UCI HAR Dataset.zip" package should be unzipped into the working directory 
 Variable names may be found in the file "CodeBook.md"
 
 =====================
-#####What the script does
+
+####What the script does
 
 Here I will describe the steps taken to clean and subset the data set.
 
