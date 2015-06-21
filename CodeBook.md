@@ -1,4 +1,5 @@
 #CodeBook
+####For the Getting And Cleaning Data Course Project
 
 Here I will describe the steps taken to clean and subset the data set.
 
@@ -42,7 +43,7 @@ The line for printing the final set to a file has been commented out, but is kep
 What follows is an excerpt from the features_info.txt file included in the data package. The variables not featured in the data set after the analysis have been removed. Finally, at the bottom, is a list of variables in the tidy data set.
 
 
-Feature Selection 
+###Feature Selection 
 =================
 
 The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
@@ -53,7 +54,7 @@ Finally a Fast Fourier Transform (FFT) was applied to some of these signals prod
 
 These signals were used to estimate variables of the feature vector for each pattern:  
 '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
-
+```
 tBodyAcc-XYZ
 tGravityAcc-XYZ
 tBodyAccJerk-XYZ
@@ -71,6 +72,7 @@ fBodyAccMag
 fBodyAccJerkMag
 fBodyGyroMag
 fBodyGyroJerkMag
+```
 
 The set of variables that were estimated from these signals are: 
 
@@ -78,7 +80,7 @@ mean: Mean value
 std: Standard deviation
 
 The complete list of variables starts here.
-
+```
 1 tBodyAcc.mean...X
 2 tBodyAcc.mean...Y
 3 tBodyAcc.mean...Z
@@ -147,3 +149,4 @@ The complete list of variables starts here.
 66 fBodyBodyGyroJerkMag.std..
 67 subject
 68 activity
+```
